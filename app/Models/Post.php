@@ -10,7 +10,6 @@ use Illuminate\Support\Carbon;
 
 class Post extends Model
 {
-    use HasFactory;
 
     protected static function boot()
     {
@@ -35,22 +34,16 @@ class Post extends Model
         });
     }
 
-    protected $fillable = [
-        'title',
-        'reading_time',
-        'tanggal',
-        'thumbnail',
-        'content',
-        'slug',
-        'category_id',
-        'is_published'
-    ];
+    protected $fillable = ['title', 'reading_time', 'thumbnail', 'content', 'slug', 'category_id', 'is_published', 'tanggal'];
 
-    // convert tanggal
+
+
+    // Definisikan aksesornya
     public function getTanggalAttribute($value)
     {
         return Carbon::parse($value)->format('d M Y');
     }
+
 
     public function category()
     {
